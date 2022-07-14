@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "672288968973",
+    "firebase_url": "https://barbell-plus-d094b-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "barbell-plus-d094b",
+    "storage_bucket": "barbell-plus-d094b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672288968973:android:3271f716d375ffcc272044",
+        "android_client_info": {
+          "package_name": "lomatek.barbellplus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672288968973-l2oufroj7sc9vec3tgsuh17ftjk6ajhr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lomatek.barbellplus",
+            "certificate_hash": "460c542cafacf45ba6b3093dc57c288aef664c81"
+          }
+        },
+        {
+          "client_id": "672288968973-c7lpjr2svdetuq9t1q3rn4oguvnkdc6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGoBlH5Lh4282VQQ-FEdjL6EKhWXyUTKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672288968973-c7lpjr2svdetuq9t1q3rn4oguvnkdc6h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "672288968973-mu7govpor0v7l30m4onlsvro5m37kcn1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "lomatek.barbellplus"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

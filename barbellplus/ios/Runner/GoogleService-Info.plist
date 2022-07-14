@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>672288968973-mu7govpor0v7l30m4onlsvro5m37kcn1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.672288968973-mu7govpor0v7l30m4onlsvro5m37kcn1</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>672288968973-l2oufroj7sc9vec3tgsuh17ftjk6ajhr.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBVuZFmunpDMIVo__YD073tYnFu5zV63Pw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>672288968973</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>lomatek.barbellplus</string>
+	<key>PROJECT_ID</key>
+	<string>barbell-plus-d094b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>barbell-plus-d094b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:672288968973:ios:f847bfa59699a6a2272044</string>
+	<key>DATABASE_URL</key>
+	<string>https://barbell-plus-d094b-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
