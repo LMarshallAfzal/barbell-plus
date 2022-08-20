@@ -5,7 +5,6 @@ import 'package:barbellplus/workout/workout.dart';
 import 'package:barbellplus/history/history.dart';
 import 'package:barbellplus/theme.dart';
 import 'package:flutter/material.dart';
-// import 'package:barbellplus/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -26,7 +25,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // routes: appRoutes,
       home: const MainScreen(),
       theme: appTheme,
     );
@@ -40,30 +38,27 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  Color mainColor = const Color(0xFF2631C1);
+  Color mainColor = const Color.fromARGB(255, 209, 5, 5);
+  Color secondaryColor = const Color.fromARGB(255, 117, 117, 117);
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Barbell Plus'),
-      //   elevation: 0,
-      //   backgroundColor: mainColor,
-      // ),
       body: PersistentTabView(
         context,
         controller: _controller,
         screens: const [
           WorkoutScreen(),
           ExercisesScreen(),
-          HistoryScreen(),
           NetworkScreen(),
+          HistoryScreen(),
           ProfileScreen(),
         ],
         items: _navBarsItems(),
-        navBarStyle: NavBarStyle.style1,
+        navBarStyle: NavBarStyle.style6,
+        backgroundColor: const Color.fromARGB(244, 210, 204, 204),
       ),
     );
   }
@@ -71,34 +66,34 @@ class _MainScreenState extends State<MainScreen> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
+        icon: const Icon(FontAwesomeIcons.clipboardList),
+        title: ('Workout'),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: secondaryColor,
+      ),
+      PersistentBottomNavBarItem(
         icon: const Icon(FontAwesomeIcons.dumbbell),
         title: ('Exercises'),
         activeColorPrimary: mainColor,
-        inactiveColorPrimary: Colors.grey[600],
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(FontAwesomeIcons.dumbbell),
-        title: ('Workout'),
-        activeColorPrimary: mainColor,
-        inactiveColorPrimary: Colors.grey[600],
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(FontAwesomeIcons.clockRotateLeft),
-        title: ('History'),
-        activeColorPrimary: mainColor,
-        inactiveColorPrimary: Colors.grey[600],
+        inactiveColorPrimary: secondaryColor,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(FontAwesomeIcons.networkWired),
         title: ('Network'),
         activeColorPrimary: mainColor,
-        inactiveColorPrimary: Colors.grey[600],
+        inactiveColorPrimary: secondaryColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(FontAwesomeIcons.clockRotateLeft),
+        title: ('History'),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: secondaryColor,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(FontAwesomeIcons.user),
         title: ('Profile'),
         activeColorPrimary: mainColor,
-        inactiveColorPrimary: Colors.grey[600],
+        inactiveColorPrimary: secondaryColor,
       ),
     ];
   }

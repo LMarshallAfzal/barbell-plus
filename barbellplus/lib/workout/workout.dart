@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:barbellplus/shared/bottom_nav.dart';
 
 class WorkoutScreen extends StatelessWidget {
   const WorkoutScreen({super.key});
@@ -10,7 +9,6 @@ class WorkoutScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Workout'),
       ),
-      // bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
