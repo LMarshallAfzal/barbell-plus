@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:barbellplus/services/auth.dart';
 import 'package:barbellplus/home/home.dart';
@@ -18,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           buildTop(),
-          // buildContent(),
+          buildContent(),
         ],
       ),
     );
@@ -33,6 +35,23 @@ class ProfileScreen extends StatelessWidget {
         buildCoverImage(),
         Positioned(top: top, child: buildProfileImage()),
       ],
+    );
+  }
+
+  Widget buildContent() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 78),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const <Widget>[
+          Text('@lmarshallafzal',
+              style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold)),
+          Text('Leonard Marshall Afzal',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('110kg',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        ],
+      ),
     );
   }
 
@@ -53,8 +72,8 @@ class ProfileScreen extends StatelessWidget {
   Widget buildCoverImage() {
     return Container(
         color: Colors.grey[200],
-        child: Image.network(
-          'https://img.freepik.com/free-photo/low-angle-view-unrecognizable-muscular-build-man-preparing-lifting-barbell-health-club_637285-2497.jpg?w=600',
+        child: Image.asset(
+          'assets/images/portfolio-cover.jpeg',
           width: double.infinity,
           height: coverHeight,
           fit: BoxFit.cover,
@@ -65,8 +84,7 @@ class ProfileScreen extends StatelessWidget {
     return CircleAvatar(
       radius: profileHeight / 2,
       backgroundColor: Colors.grey.shade800,
-      backgroundImage: const NetworkImage(
-          'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'),
+      backgroundImage: const AssetImage('assets/images/profile.png'),
     );
   }
 }
