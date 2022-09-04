@@ -10,11 +10,15 @@ class Dates extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<DateBox> dateBoxes = [];
-    for (var i = 0; i < workoutDays.length; i++) {
+
+    DateTime date = DateTime.now().subtract(const Duration(days: 3));
+
+    for (int i = 0; i < 6; i++) {
       dateBoxes.add(DateBox(
-        session: workoutDays[i],
-        active: i == 0,
+        date: date,
+        active: i == 3,
       ));
+      date = date.add(const Duration(days: 1));
     }
 
     return Padding(
@@ -29,13 +33,13 @@ class Dates extends StatelessWidget {
 
 class DateBox extends StatelessWidget {
   final bool active;
-  final WorkoutDay session;
+  final DateTime date;
 
   // ignore: prefer_const_constructors_in_immutables
   DateBox({
     Key? key,
     required this.active,
-    required this.session,
+    required this.date,
   }) : super(key: key);
 
   @override
@@ -48,8 +52,8 @@ class DateBox extends StatelessWidget {
         gradient: active
             ? const LinearGradient(
                 colors: [
-                  Color(0xff92e2ff),
-                  Color(0xff1ebdf8),
+                  Color(0xffd44a4e),
+                  Color(0xffde2f34),
                 ],
                 begin: Alignment.topCenter,
               )
@@ -63,12 +67,12 @@ class DateBox extends StatelessWidget {
         style: active ? const TextStyle(color: Colors.white) : null,
         child: Column(
           children: [
-            Text(weekdays[session.date.weekday]!,
+            Text(weekdays[date.weekday]!,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 10,
                 )),
-            Text(session.date.day.toString(),
+            Text(date.day.toString().padLeft(2, '0'),
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
