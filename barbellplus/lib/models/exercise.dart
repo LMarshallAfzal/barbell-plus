@@ -84,7 +84,7 @@ final List<Exercise> exercises = [
       primaryMuscleGroup: 'Triceps',
       secondaryMuscleGroup: ['Pecs']),
   Exercise(
-      image: const AssetImage('asset/image/preacher-curl.jpg'),
+      image: const AssetImage('assets/images/preacher-curl.jpg'),
       name: 'Preacher Curls',
       description:
           'The preacher curls is a strength exercise that targets the bicep',
