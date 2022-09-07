@@ -48,3 +48,4 @@ app.*.map.json
 
 # firestore integaration
 models.g.dart
+/lib/services/models.g.dart
