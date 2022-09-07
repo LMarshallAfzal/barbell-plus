@@ -48,9 +48,6 @@ class ExerciseItem extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 5),
           height: 65,
           decoration: BoxDecoration(
-            // border: Border.all(
-            //   color: Colors.black12,
-            // ),
             color: Colors.black12,
             borderRadius: BorderRadius.circular(10),
           ),

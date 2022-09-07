@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:barbellplus/shared/bottom_nav.dart';
 
 class NetworkScreen extends StatelessWidget {
   const NetworkScreen({super.key});
@@ -10,7 +9,6 @@ class NetworkScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Network'),
       ),
-      // bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
