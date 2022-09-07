@@ -343,4 +343,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# build runner generated files
+models.g.dart
+/barbellplus/lib/services/*.g.dart
+
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,flutter,firebase,node,git,react,dart
