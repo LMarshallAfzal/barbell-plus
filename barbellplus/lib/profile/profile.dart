@@ -1,10 +1,9 @@
+import 'package:barbellplus/profile/sign_out_button.dart';
 import 'package:flutter/material.dart';
 import 'package:barbellplus/shared/header.dart';
 import 'package:barbellplus/profile/personal_stats.dart';
 import 'package:barbellplus/profile/image_gallery.dart';
 import 'package:barbellplus/profile/function_list.dart';
-import 'package:barbellplus/services/auth.dart';
-import 'package:barbellplus/home/home.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -17,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
         PersonalStats(),
         ImageGallery(),
         FunctionList(),
+        SignOutButton(),
       ],
     );
   }
