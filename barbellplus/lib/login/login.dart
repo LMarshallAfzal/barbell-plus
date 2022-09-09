@@ -9,14 +9,32 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/login-background.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.all(30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const FlutterLogo(
+            const Icon(
+              FontAwesomeIcons.dumbbell,
               size: 150,
+              color: Color.fromARGB(255, 209, 5, 5),
             ),
+            const Text(
+              'Barbell Plus',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color.fromARGB(255, 209, 5, 5),
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 120),
             Flexible(
               child: LoginButton(
                 icon: FontAwesomeIcons.userNinja,
