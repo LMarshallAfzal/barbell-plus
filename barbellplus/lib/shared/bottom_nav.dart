@@ -7,69 +7,71 @@ import 'package:barbellplus/profile/profile.dart';
 import 'package:barbellplus/workout/workout.dart';
 import 'package:barbellplus/history/history.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
 
   @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  Color mainColor = const Color.fromARGB(255, 209, 5, 5);
+  Color secondaryColor = const Color.fromARGB(255, 117, 117, 117);
+  final PersistentTabController _controller =
+      PersistentTabController(initialIndex: 0);
+
+  @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(
-            FontAwesomeIcons.dumbbell,
-            size: 20,
-          ),
-          label: 'Workout',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            FontAwesomeIcons.dumbbell,
-            size: 20,
-          ),
-          label: 'Exercises',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            FontAwesomeIcons.clockRotateLeft,
-            size: 20,
-          ),
-          label: 'History',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            FontAwesomeIcons.networkWired,
-            size: 20,
-          ),
-          label: 'Network',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            FontAwesomeIcons.user,
-            size: 20,
-          ),
-          label: 'Profile',
-        ),
-      ],
-      fixedColor: Colors.deepPurple[200],
-      onTap: (int idx) {
-        switch (idx) {
-          case 0:
-            Navigator.pushNamed(context, '/workout');
-            break;
-          case 1:
-            Navigator.pushNamed(context, '/exercises');
-            break;
-          case 2:
-            Navigator.pushNamed(context, '/history');
-            break;
-          case 3:
-            Navigator.pushNamed(context, '/network');
-            break;
-          case 4:
-            Navigator.pushNamed(context, '/profile');
-            break;
-        }
-      },
+    return Scaffold(
+      body: PersistentTabView(
+        context,
+        controller: _controller,
+        screens: const [
+          WorkoutScreen(),
+          ExercisesScreen(),
+          NetworkScreen(),
+          HistoryScreen(),
+          ProfileScreen(),
+        ],
+        items: _navBarsItems(),
+        navBarStyle: NavBarStyle.style6,
+        backgroundColor: const Color.fromARGB(244, 210, 204, 204),
+      ),
     );
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: const Icon(FontAwesomeIcons.clipboardList),
+        title: ('Workout'),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: secondaryColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(FontAwesomeIcons.dumbbell),
+        title: ('Exercises'),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: secondaryColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(FontAwesomeIcons.networkWired),
+        title: ('Network'),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: secondaryColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(FontAwesomeIcons.clockRotateLeft),
+        title: ('History'),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: secondaryColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(FontAwesomeIcons.user),
+        title: ('Profile'),
+        activeColorPrimary: mainColor,
+        inactiveColorPrimary: secondaryColor,
+      ),
+    ];
   }
 }

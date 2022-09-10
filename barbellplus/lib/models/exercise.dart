@@ -9,6 +9,7 @@ enum RecordType {
 }
 
 class Exercise {
+  final int id;
   final AssetImage image;
   final String name;
   final String description;
@@ -17,6 +18,7 @@ class Exercise {
   final List<String> secondaryMuscleGroup;
 
   Exercise({
+    required this.id,
     required this.image,
     required this.name,
     required this.description,
@@ -28,6 +30,7 @@ class Exercise {
 
 final List<Exercise> exercises = [
   Exercise(
+      id: 1,
       image: const AssetImage('assets/images/squat.jpg'),
       name: 'Barbell Squat',
       description:
@@ -36,6 +39,7 @@ final List<Exercise> exercises = [
       primaryMuscleGroup: 'Glutes',
       secondaryMuscleGroup: ['Quadriceps', 'Hips', 'Obliques']),
   Exercise(
+      id: 2,
       image: const AssetImage('assets/images/bench-press.jpg'),
       name: 'Bench Press',
       description:
@@ -44,6 +48,7 @@ final List<Exercise> exercises = [
       primaryMuscleGroup: 'Pecs',
       secondaryMuscleGroup: ['Front Delts', 'Triceps']),
   Exercise(
+      id: 3,
       image: const AssetImage('assets/images/deadlift.jpg'),
       name: 'Deadlift',
       description:
@@ -52,6 +57,7 @@ final List<Exercise> exercises = [
       primaryMuscleGroup: 'Glutes',
       secondaryMuscleGroup: ['Quadriceps', 'Hips', 'Obliques']),
   Exercise(
+      id: 4,
       image: const AssetImage('assets/images/overhead-press.jpg'),
       name: 'Overhead Press',
       description:
@@ -60,6 +66,7 @@ final List<Exercise> exercises = [
       primaryMuscleGroup: 'Front Delts',
       secondaryMuscleGroup: ['Triceps', 'Pecs']),
   Exercise(
+    id: 5,
     image: const AssetImage('assets/images/barbell-row.jpg'),
     name: 'Barbell Row',
     description:
@@ -69,6 +76,7 @@ final List<Exercise> exercises = [
     secondaryMuscleGroup: ['Romboids', 'Traps'],
   ),
   Exercise(
+      id: 6,
       image: const AssetImage('assets/images/chin-up.jpg'),
       name: 'Chin Up',
       description:
@@ -77,6 +85,7 @@ final List<Exercise> exercises = [
       primaryMuscleGroup: 'Biceps',
       secondaryMuscleGroup: ['Brachialis', 'Lats']),
   Exercise(
+      id: 7,
       image: const AssetImage('assets/images/dips.jpg'),
       name: 'Dips',
       description: 'The dip is a strength exercise that targets triceps.',
@@ -84,6 +93,7 @@ final List<Exercise> exercises = [
       primaryMuscleGroup: 'Triceps',
       secondaryMuscleGroup: ['Pecs']),
   Exercise(
+      id: 7,
       image: const AssetImage('assets/images/preacher-curl.jpg'),
       name: 'Preacher Curls',
       description:

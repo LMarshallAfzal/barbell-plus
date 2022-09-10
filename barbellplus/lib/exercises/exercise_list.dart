@@ -1,3 +1,4 @@
+import 'package:barbellplus/exercises/exercise_dialog.dart';
 import 'package:barbellplus/models/exercise.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,12 @@ class ExerciseItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/exercise');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ExerciseDialog(exercise: exercise),
+          ),
+        );
       },
       child: Container(
           margin: const EdgeInsets.symmetric(vertical: 5),

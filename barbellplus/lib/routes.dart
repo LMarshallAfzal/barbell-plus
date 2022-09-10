@@ -1,3 +1,4 @@
+import 'package:barbellplus/exercises/exercise_dialog.dart';
 import 'package:barbellplus/login/login.dart';
 import 'package:barbellplus/profile/profile.dart';
 import 'package:barbellplus/home/home.dart';
@@ -14,4 +15,5 @@ var appRoutes = {
   '/network': (context) => const NetworkScreen(),
   '/history': (context) => const HistoryScreen(),
   '/exercises': (context) => const ExercisesScreen(),
+  // '/exercise_dialog/id': (context) => const ExerciseDialog(id: 0),
 };
