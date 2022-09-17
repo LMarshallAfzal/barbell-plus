@@ -347,4 +347,13 @@ $RECYCLE.BIN/
 models.g.dart
 /barbellplus/lib/services/*.g.dart
 
+# wget files
+wget-log*
+
+# firebase keys
+serviceAccountKey.json
+
+# Web driver
+chromedriver
+
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,flutter,firebase,node,git,react,dart
