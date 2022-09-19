@@ -8,7 +8,7 @@ class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   /// Reads all documments from the users collection
-  Future<List<User>> getUsers() async {
+  Future<List<User>>? getUsers() async {
     var ref = _db.collection('users');
     var snapshot = await ref.get();
     var data = snapshot.docs.map((s) => s.data());
@@ -17,14 +17,14 @@ class FirestoreService {
   }
 
   /// Retrieves a single user documentString
-  Future<User> getUser(String userId) async {
+  Future<User>? getUser(String userId) async {
     var ref = _db.collection('users').doc(userId);
     var snapshot = await ref.get();
     return User.fromJson(snapshot.data() ?? {});
   }
 
   /// Reads all documents from the exercises collection
-  Future<List<Exercise>> getExercises() async {
+  Future<List<Exercise>>? getExercises() async {
     var ref = _db.collection('exercises');
     var snapshot = await ref.get();
     var data = snapshot.docs.map((s) => s.data());
@@ -33,14 +33,14 @@ class FirestoreService {
   }
 
   /// Retrieves a single exercise document
-  Future<Exercise> getExercise(String exerciseId) async {
+  Future<Exercise>? getExercise(String exerciseId) async {
     var ref = _db.collection('exercises').doc(exerciseId);
     var snapshot = await ref.get();
     return Exercise.fromJson(snapshot.data() ?? {});
   }
 
   /// Reads all documents from the workouts collection
-  Future<List<Workout>> getWorkouts() async {
+  Future<List<Workout>>? getWorkouts() async {
     var ref = _db.collection('workouts');
     var snapshot = await ref.get();
     var data = snapshot.docs.map((s) => s.data());
@@ -49,7 +49,7 @@ class FirestoreService {
   }
 
   /// Retrieves a single workout document
-  Future<Workout> getWorkout(String workoutId) async {
+  Future<Workout>? getWorkout(String workoutId) async {
     var ref = _db.collection('workouts').doc(workoutId);
     var snapshot = await ref.get();
     return Workout.fromJson(snapshot.data() ?? {});

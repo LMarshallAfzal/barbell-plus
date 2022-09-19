@@ -37,20 +37,18 @@ class User {
 class Exercise {
   final String id;
   final String name;
-  final String description;
+  final String equipment;
+  final String difficulty;
   final String image;
-  final RecordType recordType;
-  final String primaryMuscleGroup;
-  final List<String> secondaryMuscleGroup;
+  final String muscle;
 
   Exercise(
       {this.id = '',
       this.name = '',
-      this.description = '',
+      this.equipment = '',
+      this.difficulty = '',
       this.image = '',
-      this.recordType = RecordType.weightAndReps,
-      this.primaryMuscleGroup = '',
-      this.secondaryMuscleGroup = const []});
+      this.muscle = ''});
 
   factory Exercise.fromJson(Map<String, dynamic> json) =>
       _$ExerciseFromJson(json);
@@ -63,18 +61,18 @@ class Workout {
   final String name;
   final String description;
   final String image;
-  final int numberOfWeeklySessions;
+  final int numberOfSessions;
   final int durationInWeeks;
-  final List<Session> exercises;
+  final List<Session> sessions;
 
   Workout(
       {this.id = '',
       this.name = '',
       this.description = '',
       this.image = 'default.png',
-      this.numberOfWeeklySessions = 0,
+      this.numberOfSessions = 0,
       this.durationInWeeks = 0,
-      this.exercises = const []});
+      this.sessions = const []});
 
   factory Workout.fromJson(Map<String, dynamic> json) =>
       _$WorkoutFromJson(json);

@@ -12,7 +12,8 @@ class Seeder():
         self.cred = credentials.Certificate("serviceAccountKey.json")
         firebase_admin.initialize_app(self.cred)
         self.firestore_db = firestore.client()
-        self.bucket = storage.bucket('barbell-plus-d094b.appspot.com')
+        self.bucket_url_prefix = 'https://firebasestorage.googleapis.com/v0/b/'
+        self.bucket = storage.bucket('barbell-plus-d094b.appspot.com/o/images/exercises')
 
         self.faker = Faker()
         self.PASSWORD = "Pa$$w0rd123!"
@@ -22,8 +23,8 @@ class Seeder():
 
     def seed(self):
         # self.create_users()
-        # self.create_exercises()
-        self.create_workouts()
+        self.create_exercises()
+        # self.create_workouts()
 
     def create_users(self):
         user_count = 0
@@ -64,12 +65,12 @@ class Seeder():
         while exercise_count < self.EXERCISE_COUNT:
             # Get exercises from dataset.csv
             with open('dataset.csv', 'r') as file:
-                reader = csv.reader(file)
+                reader = csv.DictReader(file)
                 for row in reader:
-                    exercise_name = row[0]
-                    muscle_group = row[1]
-                    equipment = row[2]
-                    difficulty = row[4]
+                    exercise_name = row['name']
+                    muscle_group = row['muscle']
+                    equipment = row['equipment']
+                    difficulty = row['difficulty']
 
                     print(f'Creating exercise {exercise_count}', end='\r')
 
@@ -80,11 +81,11 @@ class Seeder():
                     image_name = image_name.replace('-', '')
 
                     self.firestore_db.collection("exercises").document(exercise_id).set({
-                        "exercise-name": exercise_name,
-                        "muscle-group": muscle_group,
+                        "name": exercise_name,
+                        "muscle": muscle_group,
                         "equipment": equipment,
                         "difficulty": difficulty,
-                        "exercise-image": self.bucket.blob(f'images/exercises/{image_name}.gif').public_url
+                        "image": f'{self.bucket_url_prefix}barbell-plus-d094b.appspot.com/o/images%2Fexercises%2F{image_name}.gif?alt=media'
                     })
                     exercise_count += 1
 

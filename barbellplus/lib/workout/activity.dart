@@ -1,4 +1,6 @@
-import 'package:barbellplus/models/workout_days.dart';
+// import 'package:barbellplus/models/workout_days.dart';
+import 'package:barbellplus/services/firestore.dart';
+import 'package:barbellplus/services/models.dart';
 import 'package:flutter/material.dart';
 
 class RecentActivities extends StatelessWidget {
@@ -6,35 +8,48 @@ class RecentActivities extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Recent Activities',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                )),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (context, index) => ActivityItem(
-                  session: workoutDays[index],
-                ),
+    return FutureBuilder<Workout>(
+        future: FirestoreService().getWorkout('upper-lower-4-day'),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Something went wrong');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Recent Activities',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      )),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: snapshot.data!.numberOfSessions,
+                      itemBuilder: (context, index) => ActivityItem(
+                        session: snapshot.data!.sessions[index],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }
 
 class ActivityItem extends StatelessWidget {
-  final WorkoutDay session;
+  final Session session;
 
   // ignore: prefer_const_constructors_in_immutables
   ActivityItem({super.key, required this.session});
@@ -64,10 +79,10 @@ class ActivityItem extends StatelessWidget {
                 width: 35,
                 child: Container(
                   padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      image: session.image,
+                      image: AssetImage('assets/images/bodybuilder-1.jpg'),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -83,17 +98,16 @@ class ActivityItem extends StatelessWidget {
               const Icon(Icons.timer, size: 12),
               const SizedBox(width: 5),
               Text(
-                session.time,
+                session.name,
                 style:
                     const TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
               ),
               const SizedBox(width: 10),
               const Icon(Icons.wb_sunny_outlined, size: 12),
               const SizedBox(width: 5),
-              Text(
-                session.time,
-                style:
-                    const TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
+              const Text(
+                'test',
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
               ),
             ],
           )),

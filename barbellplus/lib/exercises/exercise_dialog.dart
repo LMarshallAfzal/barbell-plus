@@ -1,6 +1,6 @@
 //Stateless widget for the exercise dialog which shows an image and information about the exercise
 
-import 'package:barbellplus/models/exercise.dart';
+import 'package:barbellplus/services/models.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseDialog extends StatelessWidget {
@@ -70,10 +70,10 @@ class ExerciseDialogContent extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16.0),
-              Text(
-                exercise.description,
+              const Text(
+                'description',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 16.0,
                 ),
               ),
@@ -84,7 +84,11 @@ class ExerciseDialogContent extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text('Close'),
+                  child: const Text('Close',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 209, 5, 5),
+                        fontWeight: FontWeight.w700,
+                      )),
                 ),
               ),
             ],
@@ -99,8 +103,24 @@ class ExerciseDialogContent extends StatelessWidget {
             radius: 100,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
+              child: const Image(
+                image: AssetImage('assets/images/image-unavailable.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 30,
+          left: 16,
+          right: 16,
+          child: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 100,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
               child: Image(
-                image: exercise.image,
+                image: NetworkImage(exercise.image),
                 fit: BoxFit.cover,
               ),
             ),
