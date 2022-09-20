@@ -1,4 +1,5 @@
 import 'package:barbellplus/models/fitness_program.dart';
+import 'package:barbellplus/workout/program_list.dart';
 import 'package:flutter/material.dart';
 
 class YourPrograms extends StatefulWidget {
@@ -22,16 +23,25 @@ class _YourProgramsState extends State<YourPrograms> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text("Your Programs",
+              children: [
+                const Text("Programs",
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     )),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 15,
+                GestureDetector(
+                  child: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 15,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProgramList(),
+                        ));
+                  },
                 ),
               ],
             )),
