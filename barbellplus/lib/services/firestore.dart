@@ -52,6 +52,7 @@ class FirestoreService {
   Future<Workout>? getWorkout(String workoutId) async {
     var ref = _db.collection('workouts').doc(workoutId);
     var snapshot = await ref.get();
+    // print the data in snapshot
     return Workout.fromJson(snapshot.data() ?? {});
   }
 }
