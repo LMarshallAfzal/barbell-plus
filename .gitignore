@@ -362,13 +362,12 @@ chromedriver
 .Python
 [Bb]in
 [Ii]nclude
-[Ll]ib
 [Ll]ib64
 [Ll]ocal
 [Ss]cripts
 pyvenv.cfg
 .venv
-venv/lib/
+venv/*
 pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,flutter,firebase,node,git,react,dart
