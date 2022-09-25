@@ -1,6 +1,7 @@
 import 'package:barbellplus/services/firestore.dart';
 import 'package:barbellplus/services/models.dart';
 import 'package:barbellplus/workout/allPrograms/all_programs.dart';
+import 'package:barbellplus/workout/programOverview/program_overview.dart';
 import 'package:flutter/material.dart';
 
 class YourPrograms extends StatelessWidget {
@@ -84,33 +85,42 @@ class Program extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 175,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
-          colorFilter: ColorFilter.mode(
-              const Color.fromARGB(255, 189, 182, 182).withOpacity(0.8),
-              BlendMode.lighten),
-          image: const AssetImage('assets/images/barbell-workout.jpg'),
-          fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ProgramOverviewScreen(),
+            ));
+      },
+      child: Container(
+        height: 100,
+        width: 175,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+            colorFilter: ColorFilter.mode(
+                const Color.fromARGB(255, 189, 182, 182).withOpacity(0.8),
+                BlendMode.lighten),
+            image: const AssetImage('assets/images/barbell-workout.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      alignment: Alignment.bottomLeft,
-      padding: const EdgeInsets.all(15),
-      child: DefaultTextStyle.merge(
-        style: const TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 10,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(program.name),
-          ],
+        alignment: Alignment.bottomLeft,
+        padding: const EdgeInsets.all(15),
+        child: DefaultTextStyle.merge(
+          style: const TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 10,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(program.name),
+            ],
+          ),
         ),
       ),
     );

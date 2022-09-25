@@ -8,26 +8,25 @@ class ProgramList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Workout Programs',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                )),
-            Expanded(
-              child: ListView.builder(
-                itemCount: fitnessPrograms.length,
-                itemBuilder: (context, index) => ProgramItem(
-                  program: fitnessPrograms[index],
+      child: DecoratedBox(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: fitnessPrograms.length,
+                  itemBuilder: (context, index) => ProgramItem(
+                    program: fitnessPrograms[index],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -51,9 +50,10 @@ class ProgramItem extends StatelessWidget {
         );
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        height: 65,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.black12,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -66,10 +66,17 @@ class ProgramItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Image.asset(
-              'assets/images/greyscale-lifter.jpg',
+            const SizedBox(width: 10),
+            Container(
               width: 50,
               height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: program.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             const SizedBox(width: 20),
             Text(
