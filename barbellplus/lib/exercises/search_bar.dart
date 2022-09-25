@@ -1,3 +1,4 @@
+import 'package:barbellplus/services/models.dart';
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
