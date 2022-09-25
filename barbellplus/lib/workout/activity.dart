@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 
 class RecentActivities extends StatelessWidget {
   const RecentActivities({super.key});
+  final workoutId = 'kcl-barbell-program-leonard-basic-strength-v1';
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Workout>(
-        future: FirestoreService().getWorkout('upper-lower-4-day'),
+        future: FirestoreService().getWorkout(workoutId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Text('Something went wrong');
@@ -17,7 +18,8 @@ class RecentActivities extends StatelessWidget {
 
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                  color: Color.fromARGB(255, 209, 5, 5)),
             );
           }
           return Expanded(
@@ -34,7 +36,7 @@ class RecentActivities extends StatelessWidget {
                       )),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: snapshot.data!.numberOfSessions,
+                      itemCount: snapshot.data?.numberOfSessions,
                       itemBuilder: (context, index) => ActivityItem(
                         session: snapshot.data!.sessions[index],
                       ),
@@ -49,7 +51,7 @@ class RecentActivities extends StatelessWidget {
 }
 
 class ActivityItem extends StatelessWidget {
-  final Session session;
+  final WorkoutSession session;
 
   // ignore: prefer_const_constructors_in_immutables
   ActivityItem({super.key, required this.session});
