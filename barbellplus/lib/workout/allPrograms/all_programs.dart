@@ -10,7 +10,7 @@ class AllProgramsScreen extends StatelessWidget {
     return Column(
       children: const [
         SmallAppHeader(
-          title: 'All Programsi',
+          title: 'All Programs',
         ),
         ProgramList(),
       ],

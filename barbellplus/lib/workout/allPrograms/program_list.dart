@@ -1,5 +1,7 @@
 // list of all workout programs available in the app (upper-lower, push-pull, etc). Using harcoded data NOT FROM FIRESTORE.
 import 'package:barbellplus/models/fitness_program.dart';
+import 'package:barbellplus/services/firestore.dart';
+import 'package:barbellplus/services/models.dart';
 import 'package:flutter/material.dart';
 
 class ProgramList extends StatelessWidget {
@@ -7,34 +9,49 @@ class ProgramList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: DecoratedBox(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: fitnessPrograms.length,
-                  itemBuilder: (context, index) => ProgramItem(
-                    program: fitnessPrograms[index],
+    return FutureBuilder<List<Workout>>(
+      future: FirestoreService().getWorkouts(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(
+                color: Color.fromARGB(255, 209, 5, 5)),
+          );
+        }
+        return Expanded(
+          child: DecoratedBox(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) => ProgramItem(
+                        program: snapshot.data![index],
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
 
 class ProgramItem extends StatelessWidget {
-  final FitnessProgram program;
+  final Workout program;
 
   // ignore: prefer_const_constructors_in_immutables
   ProgramItem({super.key, required this.program});
@@ -73,20 +90,24 @@ class ProgramItem extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                  image: program.image,
+                  image: NetworkImage(program.image),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             const SizedBox(width: 20),
-            Text(
-              program.name,
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+            Expanded(
+              child: Text(
+                program.name,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
             ),
+            const SizedBox(width: 10),
           ],
         ),
       ),
