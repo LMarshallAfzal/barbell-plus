@@ -55,238 +55,10 @@ class Exercise {
   Map<String, dynamic> toJson() => _$ExerciseToJson(this);
 }
 
-// Sample document from the 'workouts' collection
-// {
-//   "id": "upper-lower-4-day",
-//   "name": "Upper-Lower 4 Day",
-//   "description": "This is a 4 day upper-lower split workout.",
-//   "image": "default.png",
-//   "numberOfSessions": 4,
-//   "duration": 8,
-//   "sessions": [
-//     {
-//       "name": "Upper Body",
-//       "description": "This is the upper body session.",
-//       "exercises": [
-//         {
-//           "name": "exercises/bench-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/overhead-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/barbell-row",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/lat-pulldown",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/face-pull",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/shoulder-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         }
-//       ]
-//     },
-//     {
-//       "name": "Lower Body",
-//       "description": "This is the lower body session.",
-//       "exercises": [
-//         {
-//           "name": "exercises/squat",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/deadlift",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/leg-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/leg-curl",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/leg-extension",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/calf-raise",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         }
-//       ]
-//     },
-//     {
-//       "name": "Upper Body",
-//       "description": "This is the upper body session.",
-//       "exercises": [
-//         {
-//           "name": "exercises/bench-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/overhead-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/barbell-row",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/lat-pulldown",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/face-pull",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/shoulder-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         }
-//       ]
-//     },
-//     {
-//       "name": "Lower Body",
-//       "description": "This is the lower body session.",
-//       "exercises": [
-//         {
-//           "name": "exercises/squat",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/deadlift",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/leg-press",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/leg-curl",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/leg-extension",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         },
-//         {
-//           "name": "exercises/calf-raise",
-//           "targetReps": [8, 8, 8],
-//           "sets": [3, 3, 3],
-//           "reps": [],
-//           "weight": [],
-//           "rest": 60
-//         }
-//       ]
-//     }
-//   ]
-// }
-
-// Create a @jsonserializable class for the workout using the sample document above
 @JsonSerializable()
 class Workout {
   String id;
+  String image;
   String name;
   String description;
   int duration;
@@ -295,6 +67,7 @@ class Workout {
 
   Workout(
       {this.id = '',
+      this.image = '',
       this.name = '',
       this.description = '',
       this.duration = 4,
@@ -306,22 +79,24 @@ class Workout {
   Map<String, dynamic> toJson() => _$WorkoutToJson(this);
 }
 
-// Create a @jsonserializable class for the workout session
 @JsonSerializable()
 class WorkoutSession {
   String name;
+  String image;
   String description;
   List<WorkoutExercise> exercises;
 
   WorkoutSession(
-      {this.name = '', this.description = '', this.exercises = const []});
+      {this.name = '',
+      this.image = '',
+      this.description = '',
+      this.exercises = const []});
 
   factory WorkoutSession.fromJson(Map<String, dynamic> json) =>
       _$WorkoutSessionFromJson(json);
   Map<String, dynamic> toJson() => _$WorkoutSessionToJson(this);
 }
 
-// Create a @jsonserializable class for the workout exercise
 @JsonSerializable()
 class WorkoutExercise {
   String name;
