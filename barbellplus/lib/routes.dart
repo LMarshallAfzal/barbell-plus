@@ -1,7 +1,7 @@
-import 'package:barbellplus/exercises/exercise_dialog.dart';
 import 'package:barbellplus/login/login.dart';
 import 'package:barbellplus/profile/profile.dart';
 import 'package:barbellplus/home/home.dart';
+import 'package:barbellplus/workout/allPrograms/all_programs.dart';
 import 'package:barbellplus/workout/workout.dart';
 import 'package:barbellplus/network/network.dart';
 import 'package:barbellplus/history/history.dart';
@@ -15,5 +15,5 @@ var appRoutes = {
   '/network': (context) => const NetworkScreen(),
   '/history': (context) => const HistoryScreen(),
   '/exercises': (context) => const ExercisesScreen(),
-  // '/exercise_dialog/id': (context) => const ExerciseDialog(id: 0),
+  '/all-programs': (context) => const AllProgramsScreen(),
 };
