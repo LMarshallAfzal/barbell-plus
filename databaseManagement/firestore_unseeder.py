@@ -13,8 +13,8 @@ class Unseeder():
 
     def unseed(self):
         # self.delete_users()
-        self.delete_exercises()
-        # self.delete_workouts()
+        # self.delete_exercises()
+        self.delete_workouts()
 
     def delete_users(self):
         print("Deleting users...")
