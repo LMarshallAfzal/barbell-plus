@@ -5,47 +5,33 @@ import 'package:barbellplus/services/models.dart';
 import 'package:flutter/material.dart';
 
 class ProgramList extends StatelessWidget {
-  const ProgramList({super.key});
+  final List<Workout> programs;
+  const ProgramList({Key? key, required this.programs}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Workout>>(
-      future: FirestoreService().getWorkouts(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Something went wrong');
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(
-                color: Color.fromARGB(255, 209, 5, 5)),
-          );
-        }
-        return Expanded(
-          child: DecoratedBox(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) => ProgramItem(
-                        program: snapshot.data![index],
-                      ),
-                    ),
+    return Expanded(
+      child: DecoratedBox(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: programs.length,
+                  itemBuilder: (context, index) => ProgramItem(
+                    program: programs[index],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

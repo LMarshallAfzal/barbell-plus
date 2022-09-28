@@ -47,7 +47,8 @@ class YourPrograms extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const AllProgramsScreen(),
+                              builder: (context) =>
+                                  AllProgramsScreen(programs: snapshot.data!),
                             ));
                       },
                     ),
@@ -90,7 +91,7 @@ class Program extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const ProgramOverviewScreen(),
+              builder: (context) => ProgramOverviewScreen(program: program),
             ));
       },
       child: Container(
@@ -126,6 +127,3 @@ class Program extends StatelessWidget {
     );
   }
 }
-
-// convert the above classes to be used with firebase firestore service
-

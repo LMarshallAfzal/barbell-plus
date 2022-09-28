@@ -1,50 +1,33 @@
-import 'package:barbellplus/services/firestore.dart';
 import 'package:barbellplus/services/models.dart';
 import 'package:flutter/material.dart';
 
-// A list of sessions which are in the program
 class SessionList extends StatelessWidget {
-  const SessionList({super.key});
+  final Workout program;
+  const SessionList({Key? key, required this.program}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Workout>(
-      future: FirestoreService()
-          .getWorkout('kcl-barbell-program-leonard-basic-strength-v1'),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Something went wrong');
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(
-                color: Color.fromARGB(255, 209, 5, 5)),
-          );
-        }
-        return SizedBox(
-          width: double.infinity,
-          height: 481,
-          child: Expanded(
-            child: CustomPaint(
-              painter: SessionListPainter(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: snapshot.data?.numberOfSessions,
-                      itemBuilder: (context, index) => SessionItem(
-                        session: snapshot.data!.sessions[index],
-                      ),
-                    ),
+    return SizedBox(
+      width: double.infinity,
+      height: 481,
+      child: Expanded(
+        child: CustomPaint(
+          painter: SessionListPainter(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: program.numberOfSessions,
+                  itemBuilder: (context, index) => SessionItem(
+                    session: program.sessions[index],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
@@ -159,6 +142,3 @@ class SessionItem extends StatelessWidget {
     );
   }
 }
-// leading: Image.network(session.image),
-              // title: Text(session.name),
-              // subtitle: Text(session.description),
