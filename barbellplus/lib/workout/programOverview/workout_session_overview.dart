@@ -4,11 +4,11 @@ import 'package:barbellplus/shared/small_header.dart';
 import 'package:barbellplus/workout/programOverview/session_exercise_list.dart';
 import 'package:flutter/material.dart';
 
-class ProgramOverviewScreen extends StatelessWidget {
+class WorkoutSessionOverviewScreen extends StatelessWidget {
   final WorkoutSession session;
-
-  const ProgramOverviewScreen({Key? key, required this.session})
+  const WorkoutSessionOverviewScreen({Key? key, required this.session})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -27,8 +27,8 @@ class ProgramOverviewScreen extends StatelessWidget {
         }
         return Column(
           children: [
-            const SmallAppHeader(
-              title: 'Session',
+            SmallAppHeader(
+              title: session.name,
             ),
             SessionExerciseList(exercises: session.exercises),
           ],

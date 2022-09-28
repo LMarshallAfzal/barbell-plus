@@ -99,7 +99,7 @@ class WorkoutSession {
 
 @JsonSerializable()
 class WorkoutExercise {
-  String name;
+  Exercise exercise;
   List<String> targetReps;
   List<String> sets;
   List<String> reps;
@@ -107,7 +107,7 @@ class WorkoutExercise {
   int rest;
 
   WorkoutExercise(
-      {this.name = '',
+      {required this.exercise,
       this.targetReps = const [],
       this.sets = const [],
       this.reps = const [],

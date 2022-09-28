@@ -5,19 +5,32 @@ import 'package:flutter/material.dart';
 // exercise list widget which contains a list of all exercises inside this workout sesssion. The class should take a WorkoutSession as a parameter and then use the exercises inside the session to build the list.
 class SessionExerciseList extends StatelessWidget {
   final List<WorkoutExercise> exercises;
-
   const SessionExerciseList({Key? key, required this.exercises})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: ListView.builder(
-        itemCount: exercises.length,
-        itemBuilder: (context, index) => SessionItem(
-          exercise: exercises[index],
-          exerciseData: exercises[index].name,
+    return Expanded(
+      child: DecoratedBox(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: exercises.length,
+                  itemBuilder: (context, index) => SessionItem(
+                    exercise: exercises[index],
+                    exerciseData: exercises[index].exercise.id,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -38,7 +51,7 @@ class SessionItem extends StatelessWidget {
         future: FirestoreService().getExercise(exerciseData),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return Text('Something went wrong ($exerciseData)');
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {

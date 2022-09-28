@@ -1,4 +1,6 @@
 import 'package:barbellplus/services/models.dart';
+import 'package:barbellplus/workout/programOverview/program_overview.dart';
+import 'package:barbellplus/workout/programOverview/workout_session_overview.dart';
 import 'package:flutter/material.dart';
 
 class SessionList extends StatelessWidget {
@@ -65,80 +67,89 @@ class SessionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
-      child: SizedBox(
-          height: 100,
-          child: Card(
-            elevation: 3,
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  width: 70,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(session.image),
-                      fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    WorkoutSessionOverviewScreen(session: session)));
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+        child: SizedBox(
+            height: 100,
+            child: Card(
+              elevation: 3,
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 70,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(session.image),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  width: 150,
-                  height: 70,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(session.name,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
-                      Text(session.description,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 12,
-                          )),
-                    ],
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: 150,
+                    height: 70,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(session.name,
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            )),
+                        Text(session.description,
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12,
+                            )),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  width: 95,
-                  height: 70,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text('No. of exercises',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                          )),
-                      Text(session.exercises.length.toString(),
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Color.fromARGB(255, 209, 5, 5),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 28,
-                          )),
-                    ],
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: 95,
+                    height: 70,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text('No. of exercises',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            )),
+                        Text(session.exercises.length.toString(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 209, 5, 5),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 28,
+                            )),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          )),
+                ],
+              ),
+            )),
+      ),
     );
   }
 }

@@ -15,5 +15,4 @@ var appRoutes = {
   '/network': (context) => const NetworkScreen(),
   '/history': (context) => const HistoryScreen(),
   '/exercises': (context) => const ExercisesScreen(),
-  '/all-programs': (context) => const AllProgramsScreen(),
 };
