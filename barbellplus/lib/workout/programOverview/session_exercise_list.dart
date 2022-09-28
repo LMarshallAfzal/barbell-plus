@@ -17,7 +17,7 @@ class SessionExerciseList extends StatelessWidget {
         itemCount: exercises.length,
         itemBuilder: (context, index) => SessionItem(
           exercise: exercises[index],
-          exerciseData: exercises[index].exercise,
+          exerciseData: exercises[index].name,
         ),
       ),
     );
